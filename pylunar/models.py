@@ -1,5 +1,6 @@
 import aiohttp
 
+
 class BaseModel:
     def __init__(self, response: aiohttp.ClientResponse):
         self.response = response
