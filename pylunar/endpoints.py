@@ -3,6 +3,9 @@ from typing import Literal, Optional
 from . import models
 from .api import Endpoint, ep
 
+@ep("gen/welcome", models.Image)
+def generate_welcome(avatar: str, username: str):
+    ...
 
 @ep("gen/achievement", models.Image)
 def generate_achievement(text: str, icon: Optional[int] = None):
