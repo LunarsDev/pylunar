@@ -1,4 +1,4 @@
-from pylunar import Client, endpoints
+from lunarapi import Client, endpoints
 from aiohttp import ClientSession
 import asyncio
 

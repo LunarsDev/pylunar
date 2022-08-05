@@ -1,15 +1,14 @@
 [tool.poetry]
-name = "pylunar"
-version = "0.1.0"
+name = "lunarapi"
+version = "0.1.5"
 description = ""
-authors = ["zeffo <phatakaman@gmail.com>"]
+authors = ["WinterFe <winter@lunardev.group>"]
 
 [tool.poetry.dependencies]
 python = "^3.10"
 aiohttp = ">=3.6.0,<3.8.0"
 python-dotenv = "^0.20.0"
 Pillow = "^9.2.0"
-"discord.py" = {git = "https://github.com/Rapptz/discord.py.git"}
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
