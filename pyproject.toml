@@ -1,8 +1,12 @@
 [tool.poetry]
 name = "lunarapi"
-version = "0.1.5"
-description = ""
+version = "0.1.6"
 authors = ["WinterFe <winter@lunardev.group>"]
+description = "Wrapper for the Lunar API"
+readme = "README.md"
+homepage = "https://pypi.org/project/lunarapi/"
+documentation = "https://docs.lunardev.group/"
+keywords = ["discord", "api", "wrapper"]
 
 [tool.poetry.dependencies]
 python = "^3.10"
