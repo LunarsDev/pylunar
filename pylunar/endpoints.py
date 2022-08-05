@@ -46,6 +46,13 @@ __valid = Literal[
     "yuri",
 ]
 
+__sfw_valid = Literal[
+    "hug"
+]
+
 
 def nsfw(__name: __valid):
     return Endpoint(f"nsfw/{__name}", model=models.JSON, fn=lambda: None)
+
+def sfw(__name: __sfw_valid):
+    return Endpoint(f"sfw/{__name}", model=models.JSON, fn=lambda: None)
