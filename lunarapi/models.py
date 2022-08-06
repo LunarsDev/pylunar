@@ -1,6 +1,5 @@
 from io import BytesIO
 import aiohttp
-from lunarapi.discordpy.File import File as File
 
 class BaseModel:
     def __init__(self, response: aiohttp.ClientResponse):
@@ -11,9 +10,9 @@ class Image(BaseModel):
     async def bytes(self):
         return await self.response.read()
     
-    async def file(self):  # sourcery skip: avoid-builtin-shadow
+    async def file(self, discord):  # sourcery skip: avoid-builtin-shadow
         b = await self.response.read()
-        return File(BytesIO(b), "image.png")
+        return discord.File(BytesIO(b), "image.png")
 
     async def save(self, fp: str):
         with open(fp, "wb") as f:

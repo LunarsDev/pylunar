@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "lunarapi"
-version = "0.1.6"
+version = "0.1.9"
 authors = ["WinterFe <winter@lunardev.group>"]
 description = "Wrapper for the Lunar API"
 readme = "README.md"
