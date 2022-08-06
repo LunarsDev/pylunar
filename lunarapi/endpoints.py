@@ -47,7 +47,8 @@ __valid = Literal[
 ]
 
 __sfw_valid = Literal[
-    "hug"
+    "hug",
+    "pat"
 ]
 
 
