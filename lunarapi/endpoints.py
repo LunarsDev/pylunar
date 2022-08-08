@@ -4,7 +4,7 @@ from . import models
 from .api import Endpoint, ep
 
 @ep("gen/welcome", models.Image)
-def generate_welcome(avatar: str, username: str):
+def generate_welcome(avatar: str, username: str, members: str, dev: any):
     ...
 
 @ep("gen/achievement", models.Image)
