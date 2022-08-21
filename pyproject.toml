@@ -9,10 +9,11 @@ documentation = "https://docs.lunardev.group/"
 keywords = ["discord", "api", "wrapper"]
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = "^3.8"
 aiohttp = ">=3.6.0,<3.8.0"
 python-dotenv = "^0.20.0"
 Pillow = "^9.2.0"
+typing-extensions = {version = ">=4.1.0,<4.3.0", python = ">=3.8,<3.9"}
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
