@@ -1,10 +1,10 @@
-from typing import Literal, Optional
+from typing import Any, Literal, Optional
 
 from . import models
 from .api import Endpoint, ep
 
 @ep("gen/welcome", models.Image)
-def generate_welcome(avatar: str, username: str, members: str, dev: any):
+def generate_welcome(avatar: str, username: str, members: str, dev: Any):
     ...
 
 @ep("gen/achievement", models.Image)
