@@ -2,7 +2,6 @@ from __future__ import annotations
 from typing import TYPE_CHECKING, Any
 
 from io import BytesIO
-import aiohttp
 
 if TYPE_CHECKING:
     from typing import Callable, Protocol, Union
