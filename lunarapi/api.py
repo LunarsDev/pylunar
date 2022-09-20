@@ -39,7 +39,6 @@ class Endpoint(Generic[ModalT, P]):
 def ep(route: str, model: Type[ModalT]) -> Callable[[Callable[P, Any]], Endpoint[ModalT, P]]:
     def inner(fn: Callable[P, Any]) -> Endpoint[ModalT, P]:
         return Endpoint(route, model=model, fn=fn)
-
     return inner
 
 
