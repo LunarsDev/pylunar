@@ -8,7 +8,7 @@ jobs:
   release:
     name: Release pylunar
     runs-on: ubuntu-latest
-    if: github.repository_owner == 'your-github-name' && github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: github.repository_owner == 'LunarsDev' && github.event_name == 'push' && github.ref == 'refs/heads/master'
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
