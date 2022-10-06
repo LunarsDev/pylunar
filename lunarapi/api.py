@@ -9,9 +9,9 @@ if TYPE_CHECKING:
     from .models import BaseModel
 
 if TYPE_CHECKING:
-    P = ParamSpec('P')
+    P = ParamSpec("P")
 else:
-    P = TypeVar('P')
+    P = TypeVar("P")
 
 __all__ = "Client", "Endpoint", "ep"
 
@@ -19,8 +19,11 @@ BASE = "https://api.lunardev.group/"
 
 ModalT = TypeVar("ModalT", bound="BaseModel")
 
+
 class Endpoint(Generic[ModalT, P]):
-    def __init__(self, route: str, *, model: Type[ModalT], fn: Callable[P, Any]) -> None:
+    def __init__(
+        self, route: str, *, model: Type[ModalT], fn: Callable[P, Any]
+    ) -> None:
         self.url: URL = URL(BASE + route)
         self.model: Type[ModalT] = model
         self.fn: Callable[P, Any] = fn
@@ -34,21 +37,38 @@ class Endpoint(Generic[ModalT, P]):
     ) -> ModalT:
         url = self.url.with_query(**kwargs) if kwargs else self.url
         resp = await session.get(url, headers=headers)
+        if resp.status is 401:
+            raise Exception("LunarAPI » Error | Invalid Auth")
         return self.model(resp)
 
-def ep(route: str, model: Type[ModalT]) -> Callable[[Callable[P, Any]], Endpoint[ModalT, P]]:
+
+def ep(
+    route: str, model: Type[ModalT]
+) -> Callable[[Callable[P, Any]], Endpoint[ModalT, P]]:
     def inner(fn: Callable[P, Any]) -> Endpoint[ModalT, P]:
         return Endpoint(route, model=model, fn=fn)
+
     return inner
 
 
 class Client:
     def __init__(self, *, session: ClientSession, token: str) -> None:
         self._session: ClientSession = session
-        self.__headers: Dict[Literal["Authorization"], str] = {"Authorization": f"Bearer {token}"}
+        self.__headers: Dict[Literal["Authorization"], str] = {
+            "Authorization": f"Bearer {token}"
+        }
+
+        if token is None:
+            raise Exception("LunarAPI » Error | Invalid Auth")
+
+        if token == "":
+            raise Exception("LunarAPI » Error | Invalid Auth")
 
     async def request(
         self, endpoint: Endpoint[ModalT, P], *args: P.args, **kwargs: P.kwargs
     ) -> ModalT:
         res = await endpoint.request(self._session, self.__headers, *args, **kwargs)
+        if res.response.status is 401:
+            raise Exception("LunarAPI » Error | Invalid Auth")
+
         return res
