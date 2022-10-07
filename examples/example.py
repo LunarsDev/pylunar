@@ -2,7 +2,7 @@ from lunarapi import Client, endpoints
 from aiohttp import ClientSession
 import asyncio
 
-token = "fff"  # Replace with your Lunar API Key.
+token = ""  # Replace with your Lunar API Key.
 
 async def main():
     async with ClientSession() as session:
