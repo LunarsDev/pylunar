@@ -8,7 +8,6 @@ if TYPE_CHECKING:
     from aiohttp import ClientSession
     from .models import BaseModel
 
-if TYPE_CHECKING:
     P = ParamSpec("P")
 else:
     P = TypeVar("P")
@@ -37,8 +36,6 @@ class Endpoint(Generic[ModalT, P]):
     ) -> ModalT:
         url = self.url.with_query(**kwargs) if kwargs else self.url
         resp = await session.get(url, headers=headers)
-        if resp.status is 401:
-            raise Exception("LunarAPI » Error | Invalid Auth")
         return self.model(resp)
 
 
@@ -58,17 +55,8 @@ class Client:
             "Authorization": f"Bearer {token}"
         }
 
-        if token is None:
-            raise Exception("LunarAPI » Error | Invalid Auth")
-
-        if token == "":
-            raise Exception("LunarAPI » Error | Invalid Auth")
-
     async def request(
         self, endpoint: Endpoint[ModalT, P], *args: P.args, **kwargs: P.kwargs
     ) -> ModalT:
         res = await endpoint.request(self._session, self.__headers, *args, **kwargs)
-        if res.response.status is 401:
-            raise Exception("LunarAPI » Error | Invalid Auth")
-
-        return res
+        return res.response
