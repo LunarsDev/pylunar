@@ -59,4 +59,4 @@ class Client:
         self, endpoint: Endpoint[ModalT, P], *args: P.args, **kwargs: P.kwargs
     ) -> ModalT:
         res = await endpoint.request(self._session, self.__headers, *args, **kwargs)
-        return res.response
+        return res

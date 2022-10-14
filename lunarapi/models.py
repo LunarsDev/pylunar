@@ -21,7 +21,7 @@ class Image(BaseModel):
     async def bytes(self) -> bytes:
         return await self.response.read()
 
-    async def file(self, module: DiscordT):  # sourcery skip: avoid-builtin-shadow
+    async def file(self, module):  # sourcery skip: avoid-builtin-shadow
         b = await self.response.read()
         return module.File(BytesIO(b), "image.png")
 
