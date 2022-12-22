@@ -52,7 +52,7 @@ class Client:
     def __init__(self, *, session: ClientSession, token: str) -> None:
         self._session: ClientSession = session
         self.__headers: Dict[Literal["Authorization"], str] = {
-            "Authorization": f"Bearer {token}"
+            "Authorization": f"{token}"
         }
 
     async def request(

@@ -3,23 +3,23 @@ from typing import Any, Literal, Optional
 from . import models
 from .api import Endpoint, ep
 
-@ep("gen/welcome", models.Image)
-def generate_welcome(avatar: str, username: str, members: str, dev: Any):
-    ...
+# @ep("gen/welcome", models.Image)
+# def generate_welcome(avatar: str, username: str, members: str, dev: Any):
+#     ...
 
 @ep("gen/achievement", models.Image)
-def generate_achievement(text: str, icon: Optional[int] = None):
+def generate_achievement(description: str, title: str = "Achievement Get!"):
     ...
 
 
-@ep("gen/challenge", models.Image)
-def generate_challenge(text: str, icon: Optional[int] = None):
-    ...
+# @ep("gen/challenge", models.Image)
+# def generate_challenge(text: str, icon: Optional[int] = None):
+#     ...
 
 
-@ep("gen/amiajoke", models.Image)
-def generate_amiajoke(image: str):
-    ...
+# @ep("gen/amiajoke", models.Image)
+# def generate_amiajoke(image: str):
+#     ...
 
 
 @ep("gen/bad", models.Image)
@@ -27,9 +27,9 @@ def generate_bad(image: str):
     ...
 
 
-@ep("gen/calling", models.Image)
-def generate_calling(text: str):
-    ...
+# @ep("gen/calling", models.Image)
+# def generate_calling(text: str):
+#     ...
 
 
 __valid = Literal[
